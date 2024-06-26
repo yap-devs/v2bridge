@@ -1,6 +1,3 @@
-/*
-Copyright © 2024 NAME HERE <EMAIL ADDRESS>
-*/
 package cmd
 
 import (
@@ -12,17 +9,23 @@ import (
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "v2bridge",
-	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
+	Short: "A bridge between V2Ray and other services.",
+	Long: `
+       ___   __         _     __         
+ _   _|__ \ / /_  _____(_)___/ /___ ____ 
+| | / /_/ // __ \/ ___/ / __  / __ '/ _ \
+| |/ / __// /_/ / /  / / /_/ / /_/ /  __/
+|___/____/_.___/_/  /_/\__,_/\__, /\___/ 
+                            /____/
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	v2bridge is a bridge between V2Ray and other services.
+It provides a set of commands to interact with V2Ray.`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	// Run: func(cmd *cobra.Command, args []string) { },
 }
+
+var Server string
 
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the rootCmd.
@@ -37,10 +40,5 @@ func init() {
 	// Here you will define your flags and configuration settings.
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
-
-	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.v2bridge.yaml)")
-
-	// Cobra also supports local flags, which will only run
-	// when this action is called directly.
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	rootCmd.PersistentFlags().StringVarP(&Server, "server", "s", "localhost:10085", "V2Ray server address (address:port)")
 }
